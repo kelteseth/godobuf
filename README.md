@@ -1,7 +1,7 @@
 # Godobuf v0.5
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/oniksan)
 
-## Changelog in v0.4.4
+## Changelog in v0.5
 - Make Godobuf compatible with Godot v4 Alpha
 ## Changelog in v0.4.4
 - Added support Command Line interface
