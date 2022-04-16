@@ -29,7 +29,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-tool
+@tool
 extends VBoxContainer
 
 var Parser = preload("res://addons/protobuf/parser.gd")
@@ -37,10 +37,6 @@ var Util = preload("res://addons/protobuf/protobuf_util.gd")
 
 var input_file_name = null
 var output_file_name = null
-
-func _ready():
-	var screen_size = OS.get_screen_size()
-	pass
 
 func _on_InputFileButton_pressed():
 	show_dialog($InputFileDialog)
@@ -67,16 +63,17 @@ func _on_OutputFileDialog_file_selected(path):
 func show_dialog(dialog):
 	var posX
 	var posY
-	if get_viewport().size.x <= dialog.get_rect().size.x:
+	if get_viewport().size.x <= dialog.size.x:
 		posX = 0
 	else:
-		posX = (get_viewport().size.x - dialog.get_rect().size.x) / 2
-	if get_viewport().size.y <= dialog.get_rect().size.y:
+		posX = (get_viewport().size.x - dialog.size.x) / 2
+	if get_viewport().size.y <= dialog.size.y:
 		posY = 0
 	else:
-		posY = (get_viewport().size.y - dialog.get_rect().size.y) / 2
+		posY = (get_viewport().size.y - dialog.size.y) / 2
+	# Godot 4: Calculation is broken. Opens on my second monitor
 	dialog.set_position(Vector2(posX, posY))
-	dialog.show_modal(true)
+	dialog.show()
 
 func _on_CompileButton_pressed():
 	if input_file_name == null || output_file_name == null:

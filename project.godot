@@ -6,21 +6,20 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+_global_script_classes=[]
+_global_script_class_icons={}
 
 [application]
 
 config/name="Protobuf Plugin"
 config/icon="res://logo.png"
+config/features=PackedStringArray("4.0")
 
 [editor_plugins]
 
-enabled=PoolStringArray( "protobuf" )
+enabled=PackedStringArray("res://addons/protobuf/plugin.cfg")
 
 [rendering]
 
