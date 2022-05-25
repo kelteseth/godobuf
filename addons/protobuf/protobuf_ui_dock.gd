@@ -39,11 +39,11 @@ var input_file_name = null
 var output_file_name = null
 
 func _on_InputFileButton_pressed():
-	show_dialog($InputFileDialog)
+	$InputFileDialog.popup_centered(Vector2(800,600))
 	$InputFileDialog.invalidate()
 
 func _on_OutputFileButton_pressed():
-	show_dialog($OutputFileDialog)
+	$OutputFileDialog.popup_centered(Vector2(800,600))
 	$OutputFileDialog.invalidate()
 
 func _on_InputFileDialog_file_selected(path):
@@ -60,38 +60,23 @@ func _on_OutputFileDialog_file_selected(path):
 	output_file_name = path
 	$HBoxContainer2/OutputFileEdit.text = path
 
-func show_dialog(dialog):
-	var posX
-	var posY
-	if get_viewport().size.x <= dialog.size.x:
-		posX = 0
-	else:
-		posX = (get_viewport().size.x - dialog.size.x) / 2
-	if get_viewport().size.y <= dialog.size.y:
-		posY = 0
-	else:
-		posY = (get_viewport().size.y - dialog.size.y) / 2
-	# Godot 4: Calculation is broken. Opens on my second monitor
-	dialog.set_position(Vector2(posX, posY))
-	dialog.show()
-
 func _on_CompileButton_pressed():
 	if input_file_name == null || output_file_name == null:
-		show_dialog($FilesErrorAcceptDialog)
+		$FilesErrorAcceptDialog.popup_centered()
 		return
 	
 	var file = File.new()
 	if file.open(input_file_name, File.READ) < 0:
 		print("File: '", input_file_name, "' not found.")
-		show_dialog($FailAcceptDialog)
+		$FailAcceptDialog.popup_centered()
 		return
 	
 	var parser = Parser.new()
 	
 	if parser.work(Util.extract_dir(input_file_name), Util.extract_filename(input_file_name), \
 		output_file_name, "res://addons/protobuf/protobuf_core.gd"):
-		show_dialog($SuccessAcceptDialog)
+		$SuccessAcceptDialog.popup_centered()
 	else:
-		show_dialog($FailAcceptDialog)
+		$FailAcceptDialog.popup_centered()
 	
 	return

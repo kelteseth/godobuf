@@ -19,15 +19,20 @@ offset_right = 1024.0
 offset_bottom = 61.0
 
 [node name="InputFileEdit" type="LineEdit" parent="HBoxContainer"]
-offset_right = 67.0
+offset_right = 973.0
 offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 editable = false
 
 [node name="InputFileButton" type="Button" parent="HBoxContainer"]
-offset_left = 71.0
-offset_right = 93.0
+offset_left = 977.0
+offset_right = 1024.0
 offset_bottom = 31.0
-text = "..."
+size_flags_horizontal = 4
+text = "   ...   "
 
 [node name="OutputFileButton" type="Label" parent="."]
 offset_top = 65.0
@@ -41,15 +46,16 @@ offset_right = 1024.0
 offset_bottom = 126.0
 
 [node name="OutputFileEdit" type="LineEdit" parent="HBoxContainer2"]
-offset_right = 67.0
+offset_right = 973.0
 offset_bottom = 31.0
+size_flags_horizontal = 3
 editable = false
 
 [node name="OutputFileButton" type="Button" parent="HBoxContainer2"]
-offset_left = 71.0
-offset_right = 93.0
+offset_left = 977.0
+offset_right = 1024.0
 offset_bottom = 31.0
-text = "..."
+text = "   ...   "
 
 [node name="Control" type="Control" parent="."]
 offset_top = 130.0
@@ -60,6 +66,8 @@ offset_bottom = 130.0
 text = "Compile"
 
 [node name="InputFileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+file_mode = 0
 access = 2
 filters = PackedStringArray("*.proto; Google Protobuf File")
 
@@ -75,7 +83,8 @@ filters = PackedStringArray("*.gd; GDScript")
 dialog_text = "Need select both output & input files!"
 
 [node name="SuccessAcceptDialog" type="AcceptDialog" parent="."]
-dialog_text = "Compile success done."
+size = Vector2i(190, 100)
+dialog_text = "Compilation successful."
 
 [node name="FailAcceptDialog" type="AcceptDialog" parent="."]
 dialog_text = "Compile fail. See details in console output."
