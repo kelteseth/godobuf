@@ -32,6 +32,7 @@
 # DEBUG_TAB redefine this "  " if you need, example: const DEBUG_TAB = "\t"
 const DEBUG_TAB : String = "  "
 
+const  PROTO_VERSION = 3
 
 enum PB_ERR {
 	NO_ERRORS = 0,
@@ -104,9 +105,9 @@ const DEFAULT_VALUES_3 = {
 	PB_DATA_TYPE.SFIXED64: 0,
 	PB_DATA_TYPE.DOUBLE: 0.0,
 	PB_DATA_TYPE.STRING: "",
-	#PB_DATA_TYPE.BYTES: [],
+	PB_DATA_TYPE.BYTES: [],
 	PB_DATA_TYPE.MESSAGE: null,
-	#PB_DATA_TYPE.MAP: []
+	PB_DATA_TYPE.MAP: []
 }
 
 enum PB_TYPE {
