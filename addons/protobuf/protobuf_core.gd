@@ -338,7 +338,7 @@ class PBPacker:
 					return pack_length_delimeted(type, field.tag, data)
 				elif field.type == PB_DATA_TYPE.STRING:
 					for v in field.value:
-						var obj = v.to_utf8()
+						var obj = v.to_utf8_buffer()
 						data.append_array(pack_length_delimeted(type, field.tag, obj))
 					return data
 				elif field.type == PB_DATA_TYPE.BYTES:
@@ -357,7 +357,7 @@ class PBPacker:
 					return data
 			else:
 				if field.type == PB_DATA_TYPE.STRING:
-					var str_bytes : PackedByteArray = field.value.to_utf8()
+					var str_bytes : PackedByteArray = field.value.to_utf8_buffer()
 					if PROTO_VERSION == 2 || (PROTO_VERSION == 3 && str_bytes.size() > 0):
 						data.append_array(str_bytes)
 						return pack_length_delimeted(type, field.tag, data)
