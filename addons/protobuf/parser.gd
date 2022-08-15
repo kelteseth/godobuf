@@ -2032,7 +2032,6 @@ class Translator:
 		core_file.close()
 		var text : String = ""
 		var nesting : int = 0
-		text += "const PROTO_VERSION = " + str(proto_version) + "\n\n"
 		text += core_text + "\n\n\n"
 		text += "############### USER DATA BEGIN ################\n"
 		var cls_user : String = ""
