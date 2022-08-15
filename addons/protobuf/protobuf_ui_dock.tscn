@@ -79,7 +79,7 @@ text = "Run unit tests (proto 2)"
 offset_top = 569.0
 offset_right = 1024.0
 offset_bottom = 600.0
-text = "Run unit tests (proto 2)"
+text = "Run unit tests (proto 3)"
 
 [node name="InputFileDialog" type="FileDialog" parent="."]
 title = "Open a File"

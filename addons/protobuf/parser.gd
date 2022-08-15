@@ -1733,7 +1733,7 @@ class Translator:
 		pbfield_text += "\"" + f.name + "\", "
 		pbfield_text += generate_field_type(f) + ", "
 		pbfield_text += generate_field_rule(f) + ", "
-		pbfield_text += String(f.tag) + ", "
+		pbfield_text += str(f.tag) + ", "
 		if f.option == Analysis.FIELD_OPTION.PACKED:
 			pbfield_text += "true"
 		elif f.option == Analysis.FIELD_OPTION.NOT_PACKED:
@@ -1750,11 +1750,11 @@ class Translator:
 		text += tabulate("service.field = " + field_name + "\n", nesting)
 		if f.field_type == Analysis.FIELD_TYPE.MESSAGE:
 			if f.qualificator == Analysis.FIELD_QUALIFICATOR.REPEATED:
-				text += tabulate("service.func_ref = funcref(self, \"add" + field_name + "\")\n", nesting)
+				text += tabulate("service.func_ref = self.add" + field_name + "\n", nesting)
 			else:
-				text += tabulate("service.func_ref = funcref(self, \"new" + field_name + "\")\n", nesting)
+				text += tabulate("service.func_ref = self.new" + field_name + "\n", nesting)
 		elif f.field_type == Analysis.FIELD_TYPE.MAP:
-			text += tabulate("service.func_ref = funcref(self, \"add_empty" + field_name + "\")\n", nesting)
+			text += tabulate("service.func_ref = self.add_empty" + field_name + "\n", nesting)
 		text += tabulate("data[" + field_name + ".tag] = service\n", nesting)
 		
 		return text
@@ -1804,7 +1804,7 @@ class Translator:
 			nesting -= 1
 			text += tabulate("func clear_" + f.name + "() -> void:\n", nesting)
 			nesting += 1
-			text += tabulate("data[" + String(f.tag) + "].state = PB_SERVICE_STATE.UNFILLED\n", nesting)
+			text += tabulate("data[" + str(f.tag) + "].state = PB_SERVICE_STATE.UNFILLED\n", nesting)
 			if f.qualificator == Analysis.FIELD_QUALIFICATOR.REPEATED:
 				text += tabulate("_" + f.name + ".value = []\n", nesting)
 				nesting -= 1
@@ -1917,7 +1917,7 @@ class Translator:
 			nesting -= 1
 			text += tabulate("func clear_" + f.name + "() -> void:\n", nesting)
 			nesting += 1
-			text += tabulate("data[" + String(f.tag) + "].state = PB_SERVICE_STATE.UNFILLED\n", nesting)
+			text += tabulate("data[" + str(f.tag) + "].state = PB_SERVICE_STATE.UNFILLED\n", nesting)
 			if f.qualificator == Analysis.FIELD_QUALIFICATOR.REPEATED:
 				text += tabulate("_" + f.name + ".value = []\n", nesting)
 				nesting -= 1
