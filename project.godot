@@ -14,8 +14,8 @@ _global_script_class_icons={}
 [application]
 
 config/name="Protobuf Plugin"
-config/icon="res://logo.png"
 config/features=PackedStringArray("4.0")
+config/icon="res://logo.png"
 
 [editor_plugins]
 

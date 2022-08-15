@@ -6,7 +6,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 0
-script = ExtResource( "1" )
+script = ExtResource("1")
 
 [node name="InputFileLabel" type="Label" parent="."]
 offset_right = 1024.0
@@ -57,16 +57,33 @@ offset_right = 1024.0
 offset_bottom = 31.0
 text = "   ...   "
 
-[node name="Control" type="Control" parent="."]
+[node name="CompileButton" type="Button" parent="."]
 offset_top = 130.0
 offset_right = 1024.0
-offset_bottom = 130.0
-
-[node name="CompileButton" type="Button" parent="Control"]
+offset_bottom = 161.0
 text = "Compile"
+
+[node name="Container" type="Container" parent="."]
+offset_top = 165.0
+offset_right = 1024.0
+offset_bottom = 530.0
+size_flags_vertical = 3
+
+[node name="TestButton2" type="Button" parent="."]
+offset_top = 534.0
+offset_right = 1024.0
+offset_bottom = 565.0
+text = "Run unit tests (proto 2)"
+
+[node name="TestButton3" type="Button" parent="."]
+offset_top = 569.0
+offset_right = 1024.0
+offset_bottom = 600.0
+text = "Run unit tests (proto 2)"
 
 [node name="InputFileDialog" type="FileDialog" parent="."]
 title = "Open a File"
+ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.proto; Google Protobuf File")
@@ -86,12 +103,21 @@ dialog_text = "Need select both output & input files!"
 size = Vector2i(190, 100)
 dialog_text = "Compilation successful."
 
+[node name="SuccessTestDialog" type="AcceptDialog" parent="."]
+size = Vector2i(190, 100)
+dialog_text = "Compilation successful."
+
 [node name="FailAcceptDialog" type="AcceptDialog" parent="."]
+dialog_text = "Compile fail. See details in console output."
+
+[node name="FailTestDialog" type="AcceptDialog" parent="."]
 dialog_text = "Compile fail. See details in console output."
 
 [connection signal="pressed" from="HBoxContainer/InputFileButton" to="." method="_on_InputFileButton_pressed"]
 [connection signal="pressed" from="HBoxContainer2/OutputFileButton" to="." method="_on_OutputFileButton_pressed"]
-[connection signal="pressed" from="Control/CompileButton" to="." method="_on_CompileButton_pressed"]
+[connection signal="pressed" from="CompileButton" to="." method="_on_CompileButton_pressed"]
+[connection signal="pressed" from="TestButton2" to="." method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="file_selected" from="InputFileDialog" to="." method="_on_InputFileDialog_file_selected"]
 [connection signal="file_selected" from="InputFileDialog2" to="." method="_on_InputFileDialog_file_selected"]
 [connection signal="file_selected" from="OutputFileDialog" to="." method="_on_OutputFileDialog_file_selected"]
