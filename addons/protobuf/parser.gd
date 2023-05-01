@@ -1399,8 +1399,8 @@ class Analysis:
 				comment_space_processing(result.tokens)
 				var syntax : TranslationResult = analyze_tokens(result.tokens)
 				if !syntax.done:
-					var pos_main : Helper.TokenPosition = Helper.text_pos(result.tokens, syntax.parse_token_index)
-					var pos_inner : Helper.TokenPosition = Helper.text_pos(result.tokens, syntax.error_token_index)
+					var pos_main : TokenPosition = Helper.text_pos(result.tokens, syntax.parse_token_index)
+					var pos_inner : TokenPosition = Helper.text_pos(result.tokens, syntax.error_token_index)
 					var spos_main : Helper.StringPosition = Helper.str_pos(document.text, pos_main)
 					var spos_inner : Helper.StringPosition = Helper.str_pos(document.text, pos_inner)
 					var err_text : String = "Syntax error in construction '" + result.tokens[syntax.parse_token_index].text + "'. "
