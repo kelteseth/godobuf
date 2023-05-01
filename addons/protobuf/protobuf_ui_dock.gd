@@ -82,7 +82,7 @@ func execute_unit_tests(source_name, script_name, compiled_script_name):
 	var output_dir_path = test_path + "temp"
 	var output_file_path = output_dir_path + "/" + compiled_script_name
 	
-	var output_dir = DirAccess.new();
+	var output_dir = DirAccess.open("");
 	output_dir.make_dir(output_dir_path)
 	var test_file = FileAccess.open(input_file_path, FileAccess.READ)
 	if test_file == null:
