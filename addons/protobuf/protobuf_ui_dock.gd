@@ -59,8 +59,8 @@ func _on_CompileButton_pressed():
 		$FilesErrorAcceptDialog.popup_centered()
 		return
 	
-	var file = File.new()
-	if file.open(input_file_name, File.READ) < 0:
+	var file = FileAccess.open(input_file_name, FileAccess.READ)
+	if file == null:
 		print("File: '", input_file_name, "' not found.")
 		$FailAcceptDialog.popup_centered()
 		return
@@ -78,15 +78,14 @@ func _on_CompileButton_pressed():
 func execute_unit_tests(source_name, script_name, compiled_script_name):
 	
 	var test_path = "res://addons/protobuf/test/"
-	var test_file = File.new()
 	var input_file_path = test_path + "source/" + source_name
 	var output_dir_path = test_path + "temp"
 	var output_file_path = output_dir_path + "/" + compiled_script_name
 	
-	var output_dir = Directory.new();
+	var output_dir = DirAccess.new();
 	output_dir.make_dir(output_dir_path)
-	
-	if test_file.open(input_file_path, File.READ) < 0:
+	var test_file = FileAccess.open(input_file_path, FileAccess.READ)
+	if test_file == null:
 		print("File: '", input_file_path, "' not found.")
 		$FailAcceptDialog.popup_centered()
 		return
@@ -102,7 +101,7 @@ func execute_unit_tests(source_name, script_name, compiled_script_name):
 	else:
 		$FailAcceptDialog.popup_centered()
 	
-	test_file.close()
+	test_file = null
 	
 	return
 
