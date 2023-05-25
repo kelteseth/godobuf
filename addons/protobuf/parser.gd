@@ -1978,7 +1978,7 @@ class Translator:
 	
 	func generate_class_services(nesting : int) -> String:
 		var text : String = ""
-		text += tabulate("func to_string() -> String:\n", nesting)
+		text += tabulate("func message_to_string() -> String:\n", nesting)
 		nesting += 1
 		text += tabulate("return PBPacker.message_to_string(data)\n", nesting)
 		text += tabulate("\n", nesting)
