@@ -1,16 +1,11 @@
-<center>
-<img src="logo_large.png">
- 
+<p align="center">
+  <img src="logo_large.png" />
+</p>
 
+<center>
 Godobuf is a [Google Protocol Buffers](https://protobuf.dev/) compiler that generates `.gd` scripts from a given `.proto` file. The current Godobuf version supports Godot 4+. For Godot 3 use older [tagged branches](https://github.com/oniksan/godobuf/tags). <br/>
 Godobuf is easy to use and does not require any external dependencies, because it is written in pure GDScript.
 </center>
-
-## Versions
-Current Godobuf master branch used for Godot version 3.2.<br/>
-If you want use Godobuf plugin for other Godot versions see:
-- 3.0.x use branch tagged v0.2.2 https://github.com/oniksan/godobuf/tree/v0.2.2
-- 3.1.x use branch tagged v0.3.0 https://github.com/oniksan/godobuf/tree/v0.3.0
 
 ## Features
 ### Supported
